@@ -1,0 +1,12 @@
+services:
+  frontend:
+    image: jpx8/docker-express:latest
+    ports:
+      - 127.0.0.1:8080:8080
+  watchtower:
+    image: nickfedor/watchtower:latest
+    container_name: watchtower
+    environment:
+      -  WATCHTOWER_POLL_INTERVAL=60 # Poll every 60 seconds
+    volumes:
+      - /run/user/1000/docker.sock:/var/run/docker.sock
